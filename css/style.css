@@ -36,9 +36,7 @@ header .one{
     left: 0;
     width: 100vw;
     padding: 1rem 9%;
-    background: var(--bg-color);
-    display: flex;
-    justify-content: space-between;
+    
     align-items: center;
     z-index: 100;
     /* Daje malo prostora unutar header-a */
@@ -166,4 +164,12 @@ h1, h2, p{
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+}
+
+.work{
+    
+    text-align: center;
+}
+.work img{
+    width: 60vw;
 }
