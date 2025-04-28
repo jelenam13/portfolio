@@ -21,22 +21,24 @@
 
 html{
     font-size: 62.5%;
-    
+    scroll-behavior: auto;
 }
 
 body{
-    
     color: var(--second-text-color);
-
 }
-
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
 header .one{
+    display: flex;
+    justify-content: space-between;
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     padding: 1rem 9%;
-    
     align-items: center;
     z-index: 100;
     /* Daje malo prostora unutar header-a */
@@ -45,8 +47,11 @@ header .one{
 a{
     text-decoration: none;
 }
-h1, h2, p{
+h1, h2, h3, h4, p{
     color: var(--second-text-color);
+}
+p{
+    font-size: 1.4rem;
 }
 .logo{
     font-size: 2.5rem;
@@ -73,34 +78,69 @@ h1, h2, p{
     display: none;
 }
 .two {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding: 50px 0;
+    padding: 8rem 0;
     flex-wrap: wrap;
     background-image: url("../pictures/background1.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    min-height: 80vh; /* Prilagodite visinu po potrebi */
-    position: relative;
+    min-height: 100vh; /* Prilagodite visinu po potrebi */
+    overflow: hidden;
   }
-  .naslov h1{
+
+  .two::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Crni sloj, 50% providan */
+    z-index: 1;
+}
+
+/* Da tekst bude iznad tog sloja */
+.naslov, .marquee-container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Navigacija menja boju kad skrolujemo */
+header .one.scrolled {
+    background: rgb(133, 123, 128, 0.6);
+    transition: background 0.3s ease;
+}
+
+header .one.scrolled .navbar a,
+header .one.scrolled .logo,
+header .one.scrolled #menu-icon {
+    color: var(--second-text-color); /* tamna boja */
+}
+
+header .one.scrolled .navbar a:hover {
+    color: var(--main-color);
+}
+header .one {
+    transition: background 0.3s ease, color 0.3s ease;
+}
+.naslov h1{
     color: var(--text-color);
     font-size: 4rem;
     text-align: center;
     padding-top: 4rem;
     padding-bottom: 2rem;
-  }
-
-  .naslov h2{
+}
+.naslov h2{
     color: var(--text-color);
     font-size: 4rem;
     text-align: center;
     padding-bottom: 2rem;
-  }
-
-  .marquee-container {
+}
+.marquee-container {
     width: 100%;
     overflow: hidden;
     position: relative;
@@ -109,34 +149,33 @@ h1, h2, p{
     white-space: nowrap; /* Sprečava prelamanje teksta */
     position: absolute;
   bottom: 0;
-  }
-
-  .marquee {
+}
+.marquee {
     display: flex;
     animation: marquee 10s linear infinite;
-    font-size: 20px;
-  }
-
-  .marquee span {
+    font-size: 1.6rem;
+}
+.marquee span {
     display: inline-block;
     margin-right: 0; /* Nema razmaka između sekvenci */
-  }
+}
 
-  /* Animacija koja omogućava besprekidno pomeranje svih span-ova */
-  @keyframes marquee {
+ /* Animacija koja omogućava besprekidno pomeranje svih span-ova */
+@keyframes marquee {
     0% {
       transform: translateX(0); /* Početak sa desne strane */
     }
     100% {
       transform: translateX(-40%); /* Kraj, van ekrana sa leve strane */
     }
-  }
+}
   
 .about{
     display: flex;
     justify-content: space-between;
-    padding: 0 10%;
+    padding: 10rem;
     align-items: center;
+    flex-wrap: wrap;
 }
 .me{
     width: 30%;
@@ -144,32 +183,333 @@ h1, h2, p{
 }
 .me img{
     width: 70%;
-    padding-top: 5rem;
+}
+.education, .experience{
+    width: 30%;
+}
+.education h2, .experience h2, .work h2{
+    font-size: 3rem;
+    padding: 0rem 0 2rem 0;
+}
+#aligne{
+    padding-top: 4rem;
+}
+.education h3, .experience h3{
+    font-size: 2rem;
+}
+.experience h2{
+    padding: 2rem 0 2rem 0;
+}
+.education h4,.experience h4,  .aboutme h3{
+    font-size: 1.6rem;
+}
+.concept{
+    padding-top: 2rem;
+}
+.experience{
+    width: 30%;
+}
+.social {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+    padding-bottom: 3rem;
 }
 
-.education h2{
-    font-size: 2.5rem;
-    padding-bottom: 0.5rem;
-}
-.social{
-    height: 100px;
+.social-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
 }
-.social i{
-    padding-left: 50px;
+
+.social-item a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 4rem;
+    height: 4rem;
+    background: transparent;
+    border: .2rem solid var(--main-color);
+    border-radius: 50%;
+    font-size: 3rem;
+    color: var(--main-color);
+    transition: .5s ease;
+}
+
+.social-item a:hover {
+    background: var(--main-color);
+    color: var(--bg-color);
+    box-shadow: 0 0 1rem var(--main-color);
+}
+
+.social-item span {
+    margin-top: 0.5rem;
+    font-size: 1.4rem;
+    color: var(--second-text-color);
 }
 .softwer{
-    height: 100px;
+    min-height: 300px;
     background-image: url("../pictures/background3.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    text-align: center;
+    padding-top: 5rem;
+}
+.softwer h2 {
+    font-size: 2.5rem;
+    color: var(--text-color);
+    margin-bottom: 2rem;
+}
+.program-item {
+    display: inline-block;
+    margin: 2rem;
+    text-align: center;
 }
 
+.program-item img {
+    width: 5rem; /* Podesi veličinu ikona/slika prema potrebi */
+    height: 5rem;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.program-item img:hover {
+    transform: scale(1.1); /* Povećava sliku pri hover-u */
+}
+
+.program-item span {
+    font-size: 1.6rem;
+    color: var(--text-color);
+}
+
+/* Dodavanje responsivnosti za manja ekrana */
+@media (max-width: 768px) {
+    .program-item {
+        margin: 1rem;
+    }
+
+    .program-item img {
+        width: 4rem;
+        height: 4rem;
+    }
+
+    .program-item span {
+        font-size: 1.4rem;
+    }
+}
 .work{
-    
+    padding-top: 5rem;
     text-align: center;
+}
+.work h2{
+    padding-bottom: 4rem;
 }
 .work img{
     width: 60vw;
+}
+
+
+
+
+@media (max-width: 1200px) {
+    .program-item img {
+        width: 4.5rem;
+        height: 4.5rem;
+    }
+
+    .program-item span {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 1024px) {
+    .about {
+        padding: 5rem;
+    }
+
+    .me {
+        width: 40%; /* Slika zauzima više prostora */
+    }
+
+    .me img {
+        width: 80%; /* Povećavamo veličinu slike na tabletima */
+    }
+
+    .experience, .education {
+        width: 45%; /* Povećavamo širinu tekstualnog dela */
+    }
+    .program-item img {
+        width: 4rem;
+        height: 4rem;
+    }
+
+    .program-item span {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    #menu-icon {
+        display: block; /* Prikazujemo ikonu menija */
+    }
+
+    .navbar {
+        display: none; /* Sakrivamo navigaciju */
+        flex-direction: column;
+        background: var(--second-bg-color);
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        width: 250px;
+        border-radius: 10px;
+        padding: 1rem 0;
+        text-align: center;
+    }
+
+    .navbar.active {
+        display: flex; /* Kada klikneš ikonu, prikazuješ navigaciju */
+    }
+
+    .navbar a {
+        display: block;
+        margin: 1rem 0;
+        font-size: 1.8rem;
+    }
+    .two {
+        padding: 6rem 1rem;
+      }
+    
+      .naslov h1, .naslov h2 {
+        font-size: 2.5rem;
+      }
+    
+      .naslov img {
+        max-width: 250px;
+      }
+    
+      .marquee {
+        font-size: 1.2rem;
+      }
+    .about {
+        flex-direction: column; /* Postavljamo sadržaj jedan ispod drugog */
+        padding: 3rem 1rem;
+        text-align: center; /* Poravnavamo tekst u centru */
+    }
+
+    .me {
+        width: 100%; /* Slika uzima celu širinu na manjim ekranima */
+        margin-bottom: 2rem; /* Dodajemo razmak između slike i teksta */
+    }
+
+    .me img {
+        width: 60%; /* Slika manja na mobilnim uređajima */
+        margin-bottom: 2rem; /* Razmak između slike i teksta */
+    }
+
+    .experience, .education {
+        width: 100%; /* Čitava širina na malim ekranima */
+    }
+
+    .aboutme h2 {
+        font-size: 2rem;
+    }
+
+    .aboutme p {
+        font-size: 1.4rem;
+    }
+
+    h3 {
+        font-size: 1.8rem;
+    }
+
+    h4 {
+        font-size: 1.4rem;
+    }
+    .softwer {
+        min-height: 400px; /* Povećavamo visinu na manjim ekranima */
+        padding-top: 3rem;  /* Možeš i smanjiti padding po potrebi */
+    }
+    .program-item {
+        margin: 1rem;
+        width: 45%; /* Uzmemo manje prostora na ekranu */
+    }
+
+    .program-item img {
+        width: 3.5rem;
+        height: 3.5rem;
+    }
+
+    .program-item span {
+        font-size: 1.2rem;
+    }
+
+    .softwer h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .about {
+        padding: 2rem 1rem; /* Smanjujemo padding */
+    }
+
+    .me img {
+        width: 50%; /* Slika manja na ultra-malim ekranima */
+    }
+
+    .experience, .education {
+        width: 100%;
+        padding: 1rem 0;
+    }
+
+    .aboutme p {
+        font-size: 1.3rem;
+    }
+
+    h3 {
+        font-size: 1.6rem;
+    }
+
+    h4 {
+        font-size: 1.2rem;
+    }
+    .softwer {
+        min-height: 450px; /* Povećaj još više za ultra-male ekrane */
+    }
+    .program-item {
+        width: 100%; /* Stavljamo svaki program u novi red na manjim ekranima */
+        text-align: center;
+    }
+
+    .program-item img {
+        width: 3rem;
+        height: 3rem;
+    }
+
+    .program-item span {
+        font-size: 1rem;
+    }
+
+    .social-item a {
+        font-size: 2rem; /* Manje ikone na malim ekranima */
+        width: 3rem;
+        height: 3rem;
+    }
+
+    .social-item span {
+        font-size: 1.2rem;
+    }
+
+    .work img {
+        width: 80%; /* Povećavamo širinu slike da zauzme veći deo ekrana */
+    }
+
+    .work h2 {
+        font-size: 2rem;
+    }
 }
