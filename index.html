@@ -99,50 +99,51 @@
      </section>
      <section class="social">
         <div class="social-item">
-            <a href="https://www.instagram.com/jejlenart/"><i class='bx bxl-instagram'></i></a>
+            <a href="https://www.instagram.com/jejlenart/" target="_blank"><i class='bx bxl-instagram'></i></a>
             <span>Instagram</span>
         </div>
         <div class="social-item">
-            <a href="https://www.linkedin.com/in/jelena-markovi%C4%87-07b6a7281?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"><i class='bx bxl-linkedin'></i></a>
+            <a href="https://www.linkedin.com/in/jelena-markovi%C4%87-07b6a7281?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank"><i class='bx bxl-linkedin'></i></a>
             <span>LinkedIn</span>
         </div>
         <div class="social-item">
-            <a href="#" class="btn"><i class='bx bx-file'></i></a>
+            <a href="doc/JelenaMarkovicCVenglish.pdf" class="btn" target="_blank"><i class='bx bx-file'></i></a>
             <span>Download CV</span>
         </div>
     </section>
     <section class="softwer">
             <h2>Software I use</h2>
-            <div class="program-item">
-                <img src="pictures/adobe-photoshop-icon.svg" alt="Photoshop">
-                <span>Photoshop</span>
-            </div>
-            <div class="program-item">
-                <img src="pictures/adobe-illustrator-icon.svg" alt="Illustrator">
-                <span>Illustrator</span>
-            </div>
-            <div class="program-item">
-                <img src="pictures/32px-Adobe_InDesign_CC_icon.svg.png" alt="InDesign">
-                <span>InDesign</span>
-            </div>
-            <div class="program-item">
-                <img src="pictures/Autodesk_Maya_version_2023_icon.jpg" alt="Maya">
-                <span>Maya</span>
-            </div>
-            <div class="program-item">
-                <img src="pictures/ZBrush_Icon.png" alt="ZBrush">
-                <span>ZBrush</span>
-            </div>
+                <div class="program-item">
+                    <img src="pictures/adobe-photoshop-icon.svg" alt="Photoshop">
+                    <span>Photoshop</span>
+                </div>
+                <div class="program-item">
+                    <img src="pictures/adobe-illustrator-icon.svg" alt="Illustrator">
+                    <span>Illustrator</span>
+                </div>
+                <div class="program-item">
+                    <img src="pictures/32px-Adobe_InDesign_CC_icon.svg.png" alt="InDesign">
+                    <span>InDesign</span>
+                </div>
+                <div class="program-item">
+                    <img src="pictures/Autodesk_Maya_version_2023_icon.jpg" alt="Maya">
+                    <span>Maya</span>
+                </div>
+                <div class="program-item">
+                    <img src="pictures/ZBrush_Icon.png" alt="ZBrush">
+                    <span>ZBrush</span>
+                </div>
+            
     </section>
     <section class="work" id="portfolio">
-        <h2>Concept Art</h2>
+        <h2 class="workh">Concept Art</h2>
         <img src="pictures/artwork3.jpg" alt="">
         <img src="pictures/artwork1.jpg" alt="">
         <img src="pictures/artwork4.jpg" alt="">
         <img src="pictures/artwork2.jpg" alt="">
-        <h2>Portrait Studies</h2>
+        <h2 id="workh2">Portrait Studies</h2>
         <img src="pictures/artwork5.jpg" alt="">
-        <h2>Environment </h2>
+        <h2 id="workh3">Environment </h2>
         <img src="pictures/artwork6.jpg" alt="">
      </section>
 
@@ -150,19 +151,25 @@
 
      <section class="contact" id="contact">
         <h2 class="heading">Contact <span>Me!</span></h2>
-        <form action="#">
+        <form action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="24416a66-a270-495b-a7ff-706312dd9382">
             <div class="input-box">
-                <input type="text" placeholder="Full Name">
-                <input type="text" placeholder="Email">
+                <input type="text" name="name" placeholder="Full Name" 
+                       pattern="[A-Za-z\s]+" title="Only letters and spaces allowed" required>
+                <input type="email" name="email" placeholder="Email" required>
             </div>
+    
             <div class="input-box">
-                <input type="number" placeholder="Mobile">
-                <input type="email" placeholder="Email subject">
+                <input type="tel" name="mobile" placeholder="Mobile" 
+                       pattern="[0-9+ ]{6,15}" title="Enter a valid phone number">
+                <input type="text" name="subject" placeholder="Email subject" required>
             </div>
-            <textarea name="" id="" cols="30" rows="10" placeholder="Your Message"></textarea>
+    
+            <textarea name="message" cols="30" rows="10" placeholder="Your Message" required></textarea>
+    
             <input type="submit" value="Send Message" class="btn">
         </form>
-        
+        <div id="success-message" class="hidden">Message sent successfully!</div>
      </section>
 
      <footer class="footer">

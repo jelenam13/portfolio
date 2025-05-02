@@ -293,6 +293,9 @@ header .one {
    margin-top: 4rem;
    margin-bottom: 4rem;
 }
+#workh2, #workh3{
+    margin-top: 0;
+}
 .work img{
     padding-bottom: 4rem;
 }
@@ -338,6 +341,31 @@ header .one {
     font-size: 3rem;
     padding-top: 8rem;
 }
+.btn{
+    background: var(--main-color);
+    border-radius: 0.5rem;
+    padding: 1rem;
+}
+#success-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #4BB543;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+  }
+  
+  #success-message.show {
+    opacity: 1;
+  }
 .footer{
     background: var(--bg-color);
     background-size: cover;
@@ -493,6 +521,7 @@ header .one {
         min-height: 400px; /* Povećavamo visinu na manjim ekranima */
         padding-top: 3rem;  /* Možeš i smanjiti padding po potrebi */
     }
+    
     .program-item {
         margin: 1rem;
         width: 45%; /* Uzmemo manje prostora na ekranu */
@@ -510,6 +539,7 @@ header .one {
     .softwer h2 {
         font-size: 2rem;
     }
+   
 }
 
 @media (max-width: 480px) {
@@ -570,5 +600,8 @@ header .one {
 
     .work h2 {
         font-size: 2rem;
+    }
+    .contact form .input-box input{
+        width: 100%;
     }
 }

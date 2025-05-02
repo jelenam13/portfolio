@@ -72,3 +72,29 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
 });
+document.querySelector("form").addEventListener("submit", function(e) {
+  e.preventDefault();
+  const form = e.target;
+
+  fetch(form.action, {
+      method: form.method,
+      body: new FormData(form),
+  }).then(response => {
+      if (response.ok) {
+          showSuccess();
+          form.reset();
+      } else {
+          alert("Message failed. Please try again.");
+      }
+  });
+});
+
+function showSuccess() {
+  const msg = document.getElementById("success-message");
+  msg.classList.add("show");
+  msg.classList.remove("hidden");
+  setTimeout(() => {
+      msg.classList.remove("show");
+      msg.classList.add("hidden");
+  }, 2000);
+}
