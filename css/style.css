@@ -400,7 +400,17 @@ header .one {
     width: 60vw;
 }
 
+.two {
+    padding: 0; /* Ukloni padding koji širi visinu */
+    min-height: 100vh; /* Ograniči na visinu ekrana */
+    height: 100vh; /* Tačno visina ekrana */
+    align-items: center; /* Poravnanje po visini */
+  }
 
+  .naslov {
+    padding: 2rem; /* Dodaj unutrašnji razmak samo ako treba */
+    text-align: center;
+  }
 
 
 @media (max-width: 1200px) {
