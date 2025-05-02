@@ -81,15 +81,17 @@ p{
     position: relative;
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    padding: 14rem 0;
+    align-items: center;
+    text-align: center; 
+    padding: 0;
     flex-wrap: wrap;
     background-image: url("../pictures/background1.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    min-height: 100vh; /* Prilagodite visinu po potrebi */
-    overflow: hidden;
+    height: 100vh; /* fallback */
+  min-height: 100vh;
+  overflow: hidden;
   }
 
   .two::after {
@@ -103,6 +105,9 @@ p{
     z-index: 1;
 }
 
+.multiple-text{
+    height: 4rem;
+}
 /* Da tekst bude iznad tog sloja */
 .naslov, .marquee-container {
     position: relative;
@@ -400,13 +405,6 @@ header .one {
     width: 60vw;
 }
 
-.two {
-    padding: 0; /* Ukloni padding koji širi visinu */
-    min-height: 100vh; /* Ograniči na visinu ekrana */
-    height: 100vh; /* Tačno visina ekrana */
-    align-items: center; /* Poravnanje po visini */
-  }
-
   .naslov {
     padding: 2rem; /* Dodaj unutrašnji razmak samo ako treba */
     text-align: center;
@@ -477,7 +475,6 @@ header .one {
         margin: 1rem 0;
         font-size: 1.8rem;
     }
-    
     
       .naslov h1, .naslov h2 {
         font-size: 2.5rem;
@@ -574,6 +571,11 @@ header .one {
 
     h4 {
         font-size: 1.2rem;
+    }
+    .two {
+        height: calc(var(--vh, 1vh) * 100); /* dinamička visina */
+        align-items: center; /* vertikalno centriranje */
+        padding: 0; /* ukloni višak prostora */
     }
     .softwer {
         min-height: 450px; /* Povećaj još više za ultra-male ekrane */
